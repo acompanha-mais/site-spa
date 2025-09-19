@@ -17,7 +17,7 @@ export default function SignUpCuidador(){
         let idade = hoje.getFullYear() - nasc.getFullYear();
         const m = hoje.getMonth() - nasc.getMonth();
         if (m < 0 || (m === 0 && hoje.getDate() < nasc.getDate())) idade--;
-        return idade
+        return idade >= 18;
     }
 
     async function validarCep(cep: string) {
@@ -65,6 +65,10 @@ export default function SignUpCuidador(){
         if (resto !== parseInt(cpf.charAt(10))) return false;
 
         return true;
+    }
+
+    function validarSenha(senha: string) {
+        return senha.length >= 8;
     }
 
     return(
