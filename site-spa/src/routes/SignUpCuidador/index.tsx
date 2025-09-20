@@ -86,8 +86,8 @@ export default function SignUpCuidador(){
     }
 
     return(
-        <main className="min-h-screen flex flex-col items-center justify-center p-4">
-            <h1 className="mb-6 text-center">Cadastre-se, Cuidador</h1>
+        <main className="min-h-screen flex flex-col items-center justify-center">
+            <h1 className="mb-20 text-center">Cadastre-se, Cuidador</h1>
             <form onSubmit={handleSubmit} className="bg-white shadow-md rounded-lg p-6 w-full max-w-md flex flex-col space-y-4">
                 <input 
                     type="text"
