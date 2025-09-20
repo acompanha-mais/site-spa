@@ -86,27 +86,30 @@ export default function SignUpCuidador(){
     }
 
     return(
-        <main>
-            <h2>Cadastre-se, Cuidador</h2>
-            <form onSubmit={handleSubmit}>
+        <main className="min-h-screen flex flex-col items-center justify-center p-4">
+            <h1 className="mb-6 text-center">Cadastre-se, Cuidador</h1>
+            <form onSubmit={handleSubmit} className="bg-white shadow-md rounded-lg p-6 w-full max-w-md flex flex-col space-y-4">
                 <input 
                     type="text"
                     placeholder="Nome completo"
                     value={nome}
                     onChange={e=> setNome(e.target.value)}
-                    required 
+                    required
+                    className="border border-gray300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#e65a4f]" 
                 />
                 <input 
                     type="date"
                     placeholder="Data de nascimento"
                     value={nascimento}
                     onChange={e=> setNascimento(e.target.value)}
-                    required 
+                    required
+                    className="border border-gray300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#e65a4f]" 
                 />
                 <select
                     value={sexo}
                     onChange={e => setSexo(e.target.value)}
                     required
+                    className="border border-gray300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#e65a4f]"
                 >
                     <option value="" disabled>Selecione o sexo</option>
                     <option value="M">Masculino</option>
@@ -120,6 +123,7 @@ export default function SignUpCuidador(){
                     required
                     minLength={8} 
                     maxLength={8}
+                    className="border border-gray300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#e65a4f]"
                 />
                 <input 
                     type="text"
@@ -129,6 +133,7 @@ export default function SignUpCuidador(){
                     required
                     minLength={11} 
                     maxLength={11}
+                    className="border border-gray300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#e65a4f]"
                 />
                 <input 
                     type="text"
@@ -138,13 +143,15 @@ export default function SignUpCuidador(){
                     required
                     minLength={8}
                     maxLength={11}
+                    className="border border-gray300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#e65a4f]"
                 />
                 <input 
                     type="email"
                     placeholder="Email"
                     value={email}
                     onChange={e=> setEmail(e.target.value)}
-                    required 
+                    required
+                    className="border border-gray300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#e65a4f]" 
                 />
                 <input 
                     type="password"
@@ -153,9 +160,10 @@ export default function SignUpCuidador(){
                     onChange={e=> setSenha(e.target.value)}
                     required
                     minLength={8}
-                    maxLength={32} 
+                    maxLength={32}
+                    className="border border-gray300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#e65a4f]" 
                 />
-                <button type="submit">Cadastrar</button>
+                <button type="submit" className="bg-[#e65a4f] hover:bg-[#cc4f45] text-white font-bold py-3 rounded-full transition-colors mx-auto">Cadastrar</button>
             </form>
         </main>
     );
