@@ -19,7 +19,30 @@ export default function Home() {
                 />
             </section>
 
-            
+            <section className="pt-60 text-center">
+                <div>
+                    <h2 className="pb-4">Faça a diferença hoje!</h2>
+                    <p>Cadastre-se agora e ajude idosos necessitados a acessarem suas teleconsultas de forma simples e segura. Sua ação garante que cada pessoa receba o cuidado que precisa.</p>
+                </div>
+                <ul className="flex flex-col items-start md:items-center gap-4 text-left md:text-left max-w-md mx-auto">
+      <li className="flex items-center gap-3">
+        <span className="text-[#e65a4f] font-bold">✅</span>
+        Facilita o acesso de idosos às teleconsultas de forma rápida e segura
+      </li>
+      <li className="flex items-center gap-3">
+        <span className="text-[#e65a4f] font-bold">✅</span>
+        Contribui para uma melhor qualidade de vida e cuidado contínuo
+      </li>
+      <li className="flex items-center gap-3">
+        <span className="text-[#e65a4f] font-bold">✅</span>
+        Recebe informações e notificações sobre teleconsultas importantes
+      </li>
+      <li className="flex items-center gap-3">
+        <span className="text-[#e65a4f] font-bold">✅</span>
+        Apoia iniciativas sociais e projetos de saúde para idosos
+      </li>
+    </ul>
+            </section>
         </main>
     );
 }
