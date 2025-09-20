@@ -6,14 +6,14 @@ export default function NavBar(){
 
     return(
         <nav className="relative">
-            <div className="hidden md:flex space-x-12">
+            <div className="hidden lg:flex space-x-12">
                 <Link to="/">Início</Link>
                 <Link to="/sobre"> Sobre nós</Link>
                 <Link to="/cadastro"> Cadastro</Link>
                 <Link to="/time">Time</Link>
             </div>
             
-            <div className="md:hidden">
+            <div className="lg:hidden">
                 <button
                     onClick={() => setIsOpen(!isOpen)}
                     className="[all:unset] text-6xl cursor-pointer"
