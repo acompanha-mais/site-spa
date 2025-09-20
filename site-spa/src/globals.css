@@ -35,3 +35,11 @@
            mx-auto md:mx-0;
   }
 }
+
+@layer utilities {
+  @media (max-width: 320px) {
+    .-ml-2xs {
+      margin-left: -1.5rem;
+    }
+  }
+}
