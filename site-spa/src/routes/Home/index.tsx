@@ -10,7 +10,7 @@ export default function Home() {
         <main>
             <section className="flex flex-col md:flex-row items-center justify-between md:gap-24">
                 <div className="w-full md:w-1/2 text-center md:text-left">
-                    <h1 className="text-3xl font-bold pb-4">
+                    <h1>
                         Ajude quem precisa! Faça a diferença!
                     </h1>
                     <p>
