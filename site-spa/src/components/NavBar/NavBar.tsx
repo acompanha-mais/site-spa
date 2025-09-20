@@ -5,7 +5,7 @@ export default function NavBar(){
         <nav>
             <Link to="/">Início</Link> |
             <Link to="/sobre"> Sobre nós</Link> |
-            <Link to="/cadastro/cuidador"> Cadastro</Link>
+            <Link to="/cadastro"> Cadastro</Link>
         </nav>
     );
 }
