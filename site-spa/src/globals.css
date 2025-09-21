@@ -26,7 +26,7 @@
   }
 
   p {
-    @apply text-base md:text-lg lg:text-xl;
+    @apply text-[18px] md:text-lg lg:text-xl;
   }
 
   button {

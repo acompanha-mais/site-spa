@@ -6,11 +6,12 @@ export default function NavBar(){
 
     return(
         <nav className="relative">
-            <div className="hidden lg:flex space-x-12">
+            <div className="hidden lg:flex space-x-12 2xl:text-[18px]">
                 <Link to="/">Início</Link>
                 <Link to="/sobre"> Sobre nós</Link>
                 <Link to="/cadastro"> Cadastro</Link>
                 <Link to="/time">Time</Link>
+                <Link to="/faq">FAQ</Link>
             </div>
             
             <div className="lg:hidden">
