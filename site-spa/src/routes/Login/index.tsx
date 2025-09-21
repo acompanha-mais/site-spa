@@ -27,28 +27,32 @@ export default function Login() {
         sessionStorage.setItem("logado", "true");
 
         alert("Login realizado com sucesso!")
-        navigate("");
+        navigate("/perfil-cuidador");
     }
 
     return(
-        <main>
-            <h2>Login</h2>
-            
-            
+        <main className="min-h-screen flex flex-col items-center">
+            <h1 className="mb-20 text-center">Login</h1>
+            <form onSubmit={verificarLogin} className="bg-white shadow-md rounded-lg p-6 w-full max-w-md flex flex-col space-y-4">
+                <input 
+                    type="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={e=> setEmail(e.target.value)}
+                    required
+                    className="border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-600"
+                />
+                <input 
+                    type="password"
+                    placeholder="Senha" 
+                    value={senha}
+                    onChange={e=> setSenha(e.target.value)}
+                    required
+                    className="border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-600"
+                />
 
-
-            <input 
-                type="email"
-                placeholder="email"
-                value={email}
-                onChange={e=> setEmail(e.target.value)}
-            />
-            <input 
-                type="password"
-                placeholder="Senha" 
-                value={senha}
-                onChange={e=> setSenha(e.target.value)}
-            />
+                <button type="submit" className="mx-auto w-[130px] md:w-[176px] mt-4">Entrar</button>
+            </form>
         </main>
     );
 }

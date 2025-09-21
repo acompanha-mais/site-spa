@@ -9,9 +9,10 @@ export default function NavBar(){
             <div className="hidden lg:flex space-x-12 2xl:text-[18px]">
                 <Link to="/">Início</Link>
                 <Link to="/sobre"> Sobre nós</Link>
-                <Link to="/cadastro"> Cadastro</Link>
                 <Link to="/time">Time</Link>
                 <Link to="/faq">FAQ</Link>
+                <Link to="/cadastro"> Cadastro</Link>
+                <Link to="/login">Login</Link>
             </div>
             
             <div className="lg:hidden">
@@ -29,9 +30,10 @@ export default function NavBar(){
                     <div className="flex flex-col p-4 space-y-2">
                         <Link to="/" onClick={() => setIsOpen(false)}>Início</Link>
                         <Link to="/sobre" onClick={() => setIsOpen(false)}>Sobre nós</Link>
-                        <Link to="/cadastro" onClick={() => setIsOpen(false)}>Cadastro</Link>
                         <Link to="/time" onClick={() => setIsOpen(false)}>Time</Link>
                         <Link to="/faq" onClick={() => setIsOpen(false)}>FAQ</Link>
+                        <Link to="/cadastro" onClick={() => setIsOpen(false)}>Cadastro</Link>
+                        <Link to="/login" onClick={() => setIsOpen(false)}>Login</Link>
                     </div>
                 </div>
             </div>

@@ -107,7 +107,7 @@ export default function SignUpCuidador() {
     
 
     return(
-        <main className="min-h-screen flex flex-col items-center justify-center">
+        <main className="min-h-screen flex flex-col items-center">
             <h1 className="mb-20 text-center">Cadastre-se, Cuidador</h1>
             <form onSubmit={handleSubmit} className="bg-white shadow-md rounded-lg p-6 w-full max-w-md flex flex-col space-y-4">
                 <input 
@@ -116,7 +116,7 @@ export default function SignUpCuidador() {
                     value={nome}
                     onChange={e=> setNome(e.target.value)}
                     required
-                    className="border border-gray300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-600" 
+                    className="border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-600" 
                 />
                 <input 
                     type="date"
@@ -124,13 +124,13 @@ export default function SignUpCuidador() {
                     value={nascimento}
                     onChange={e=> setNascimento(e.target.value)}
                     required
-                    className="border border-gray300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-600" 
+                    className="border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-600" 
                 />
                 <select
                     value={sexo}
                     onChange={e => setSexo(e.target.value)}
                     required
-                    className="border border-gray300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-600"
+                    className="border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-600"
                 >
                     <option value="" disabled>Selecione o sexo</option>
                     <option value="M">Masculino</option>
@@ -144,7 +144,7 @@ export default function SignUpCuidador() {
                     required
                     minLength={8} 
                     maxLength={8}
-                    className="border border-gray300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-600"
+                    className="border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-600"
                 />
                 <input 
                     type="text"
@@ -154,7 +154,7 @@ export default function SignUpCuidador() {
                     required
                     minLength={11} 
                     maxLength={11}
-                    className="border border-gray300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-600"
+                    className="border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-600"
                 />
                 <input 
                     type="text"
@@ -164,7 +164,7 @@ export default function SignUpCuidador() {
                     required
                     minLength={8}
                     maxLength={11}
-                    className="border border-gray300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-600"
+                    className="border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-600"
                 />
                 <input 
                     type="email"
@@ -172,7 +172,7 @@ export default function SignUpCuidador() {
                     value={email}
                     onChange={e=> setEmail(e.target.value)}
                     required
-                    className="border border-gray300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-600" 
+                    className="border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-600" 
                 />
                 <input 
                     type="password"
@@ -182,7 +182,7 @@ export default function SignUpCuidador() {
                     required
                     minLength={8}
                     maxLength={32}
-                    className="border border-gray300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-600" 
+                    className="border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-600" 
                 />
                 <button type="submit" className="mx-auto w-[130px] md:w-[176px] mt-4">Cadastrar</button>
             </form>
