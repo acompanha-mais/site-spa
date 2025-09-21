@@ -1,8 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function NavBar(){
     const[isOpen, setIsOpen] = useState(false);
+    const [logado, setLogado] = useState(sessionStorage.getItem("logado"));
+
+    useEffect(() => {
+        const handleStorageChange = () => {
+            setLogado(sessionStorage.getItem("logado"));
+        };
+
+        window.addEventListener("storage", handleStorageChange);
+
+        return () => {
+            window.removeEventListener("storage", handleStorageChange);
+        };
+    }, []);
 
     return(
         <nav className="relative">
@@ -11,8 +24,10 @@ export default function NavBar(){
                 <Link to="/sobre"> Sobre nós</Link>
                 <Link to="/time">Time</Link>
                 <Link to="/faq">FAQ</Link>
-                <Link to="/cadastro"> Cadastro</Link>
-                <Link to="/login">Login</Link>
+
+                {!logado && <Link to="/cadastro">Cadastro</Link>}
+                {!logado && <Link to="/login">Login</Link>}
+                {logado && <Link to="/perfil-cuidador">Perfil cuidador</Link>}
             </div>
             
             <div className="lg:hidden">
@@ -32,8 +47,10 @@ export default function NavBar(){
                         <Link to="/sobre" onClick={() => setIsOpen(false)}>Sobre nós</Link>
                         <Link to="/time" onClick={() => setIsOpen(false)}>Time</Link>
                         <Link to="/faq" onClick={() => setIsOpen(false)}>FAQ</Link>
-                        <Link to="/cadastro" onClick={() => setIsOpen(false)}>Cadastro</Link>
-                        <Link to="/login" onClick={() => setIsOpen(false)}>Login</Link>
+
+                        {!logado && <Link to="/cadastro" onClick={() => setIsOpen(false)}>Cadastro</Link>}
+                        {!logado && <Link to="/login" onClick={() => setIsOpen(false)}>Login</Link>}
+                        {logado && <Link to="/perfil-cuidador" onClick={() => setIsOpen(false)}>Perfil cuidador</Link>}
                     </div>
                 </div>
             </div>
