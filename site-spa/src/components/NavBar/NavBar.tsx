@@ -31,6 +31,7 @@ export default function NavBar(){
                         <Link to="/sobre" onClick={() => setIsOpen(false)}>Sobre nós</Link>
                         <Link to="/cadastro" onClick={() => setIsOpen(false)}>Cadastro</Link>
                         <Link to="/time" onClick={() => setIsOpen(false)}>Time</Link>
+                        <Link to="/faq" onClick={() => setIsOpen(false)}>FAQ</Link>
                     </div>
                 </div>
             </div>
