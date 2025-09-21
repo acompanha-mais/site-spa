@@ -95,7 +95,7 @@ export default function SignUpCuidador(){
                     value={nome}
                     onChange={e=> setNome(e.target.value)}
                     required
-                    className="border border-gray300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#e65a4f]" 
+                    className="border border-gray300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-600" 
                 />
                 <input 
                     type="date"
@@ -103,13 +103,13 @@ export default function SignUpCuidador(){
                     value={nascimento}
                     onChange={e=> setNascimento(e.target.value)}
                     required
-                    className="border border-gray300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#e65a4f]" 
+                    className="border border-gray300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-600" 
                 />
                 <select
                     value={sexo}
                     onChange={e => setSexo(e.target.value)}
                     required
-                    className="border border-gray300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#e65a4f]"
+                    className="border border-gray300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-600"
                 >
                     <option value="" disabled>Selecione o sexo</option>
                     <option value="M">Masculino</option>
@@ -123,7 +123,7 @@ export default function SignUpCuidador(){
                     required
                     minLength={8} 
                     maxLength={8}
-                    className="border border-gray300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#e65a4f]"
+                    className="border border-gray300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-600"
                 />
                 <input 
                     type="text"
@@ -133,7 +133,7 @@ export default function SignUpCuidador(){
                     required
                     minLength={11} 
                     maxLength={11}
-                    className="border border-gray300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#e65a4f]"
+                    className="border border-gray300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-600"
                 />
                 <input 
                     type="text"
@@ -143,7 +143,7 @@ export default function SignUpCuidador(){
                     required
                     minLength={8}
                     maxLength={11}
-                    className="border border-gray300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#e65a4f]"
+                    className="border border-gray300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-600"
                 />
                 <input 
                     type="email"
@@ -151,7 +151,7 @@ export default function SignUpCuidador(){
                     value={email}
                     onChange={e=> setEmail(e.target.value)}
                     required
-                    className="border border-gray300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#e65a4f]" 
+                    className="border border-gray300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-600" 
                 />
                 <input 
                     type="password"
@@ -161,9 +161,9 @@ export default function SignUpCuidador(){
                     required
                     minLength={8}
                     maxLength={32}
-                    className="border border-gray300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#e65a4f]" 
+                    className="border border-gray300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-600" 
                 />
-                <button type="submit" className="bg-[#e65a4f] hover:bg-[#cc4f45] text-white font-bold py-3 rounded-full transition-colors mx-auto">Cadastrar</button>
+                <button type="submit" className="mx-auto w-[130px] md:w-[176px] mt-4">Cadastrar</button>
             </form>
         </main>
     );
