@@ -1,4 +1,6 @@
+import { CheckIcon } from "@heroicons/react/24/solid";
 import { Link } from "react-router-dom";
+
 
 export default function Home() {
     const scrollToSection = () => {
@@ -30,28 +32,28 @@ export default function Home() {
             </section>
 
             <section id="diferenca" className="pt-60 text-center">
-                <div>
-                    <h2 className="pb-4">Faça a diferença hoje!</h2>
+                <div className="pb-10">
+                    <h2 className="pb-1">Faça a diferença hoje!</h2>
                     <p>
                         Cadastre-se agora e ajude idosos necessitados a acessarem
                         suas teleconsultas de forma simples e segura. Sua ação
                         garante que cada pessoa receba o cuidado que precisa.
                     </p>
                 </div>
-                <ul className="flex flex-col items-start md:items-center gap-4 text-left md:text-left max-w-md mx-auto">
-                    <li className="flex items-center gap-3">
-                        <span className="text-[#e65a4f] font-bold">✅</span>
-                        Facilita o acesso de idosos às teleconsultas de forma
-                        rápida e segura
+                <ul className="flex flex-col items-start md:items-center gap-4  md:text-left max-w-md mx-auto">
+                    <li className="flex gap-3">
+                        <CheckIcon className="w-12 h-12 text-gray-900"/>
+                        <span className="text-red-600 font-bold">Facilita o acesso de idosos às teleconsultas de forma
+                        rápida e segura</span>
                     </li>
-                    <li className="flex items-center gap-3">
-                        <span className="text-[#e65a4f] font-bold">✅</span>
-                        Contribui para uma melhor qualidade de vida e cuidado
-                        contínuo
+                    <li className="flex gap-3">
+                        <CheckIcon className="w-12 h-12 text-gray-900"/>
+                        <span className="text-red-600 font-bold">Contribui para uma melhor qualidade de vida e cuidado
+                        contínuo</span>
                     </li>
                 </ul>
                 <Link to="/cadastro">
-                    <button className="mt-4">Vire um cuidador</button>
+                    <button className="mt-4">Canditate-se</button>
                 </Link>
                 
             </section>
