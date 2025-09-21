@@ -30,7 +30,7 @@
   }
 
   button {
-    @apply bg-[#e65a4f] text-white font-bold rounded-full
+    @apply bg-red-600 text-white font-bold rounded-full
            w-44 md:w-56 px-6 py-3 block md:inline-block
            mx-auto md:mx-0 cursor-pointer;
   }
