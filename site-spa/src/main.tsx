@@ -10,6 +10,7 @@ import Members from './routes/Members/index.tsx'
 import Faq from './routes/Faq/index.tsx'
 import SignUpCuidador from './routes/SignUpCuidador/index.tsx'
 import Login from './routes/Login/index.tsx'
+import CuidadorProfile from './routes/CuidadorProfile/index.tsx'
 
 import Error from './routes/Error/index.tsx'
 
@@ -24,7 +25,8 @@ const router = createBrowserRouter([
     {path: "/time", element: <Members/>},
     {path: "/faq", element: <Faq/>},
     {path: "/cadastro", element: <SignUpCuidador/>},
-    {path: "/login", element: <Login/>}
+    {path: "/login", element: <Login/>},
+    {path: "/perfil-cuidador", element: <CuidadorProfile/>}
   ]}
 ]);
 
