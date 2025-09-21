@@ -1,21 +1,18 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 
 export default function NavBar(){
+    const navigate = useNavigate();
     const[isOpen, setIsOpen] = useState(false);
-    const [logado, setLogado] = useState(sessionStorage.getItem("logado"));
+    const [logado, setLogado] = useState(sessionStorage.getItem("logado") === "true");
 
-    useEffect(() => {
-        const handleStorageChange = () => {
-            setLogado(sessionStorage.getItem("logado"));
-        };
-
-        window.addEventListener("storage", handleStorageChange);
-
-        return () => {
-            window.removeEventListener("storage", handleStorageChange);
-        };
-    }, []);
+    function handleLogout() {
+        sessionStorage.removeItem("logado");
+        sessionStorage.removeItem("usuarioLogado");
+        setLogado(false);
+        navigate("/login")
+    }
 
     return(
         <nav className="relative">
@@ -28,6 +25,7 @@ export default function NavBar(){
                 {!logado && <Link to="/cadastro">Cadastro</Link>}
                 {!logado && <Link to="/login">Login</Link>}
                 {logado && <Link to="/perfil-cuidador">Perfil cuidador</Link>}
+                {logado && <span onClick={handleLogout} className="text-red-600 cursor-pointer">Sair</span>}
             </div>
             
             <div className="lg:hidden">
@@ -51,6 +49,7 @@ export default function NavBar(){
                         {!logado && <Link to="/cadastro" onClick={() => setIsOpen(false)}>Cadastro</Link>}
                         {!logado && <Link to="/login" onClick={() => setIsOpen(false)}>Login</Link>}
                         {logado && <Link to="/perfil-cuidador" onClick={() => setIsOpen(false)}>Perfil cuidador</Link>}
+                        {logado && (<button onClick={() => {handleLogout(); setIsOpen(false);}} className="[all:unset] text-red-600 font-bold cursor-pointer">Sair</button>)}
                     </div>
                 </div>
             </div>

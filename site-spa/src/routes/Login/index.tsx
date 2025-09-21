@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 
-
 export default function Login() {
     const navigate = useNavigate();
     const[email, setEmail] = useState("");
@@ -27,7 +26,9 @@ export default function Login() {
         sessionStorage.setItem("logado", "true");
 
         alert("Login realizado com sucesso!")
+
         navigate("/perfil-cuidador");
+        window.location.reload();
     }
 
     return(
