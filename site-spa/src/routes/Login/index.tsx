@@ -1,36 +1,47 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-import { listaLogins } from "../../data/loginList";
 
-export default function Login(){
-    const[cpf, setCpf] = useState("");
+
+export default function Login() {
+    const navigate = useNavigate();
+    const[email, setEmail] = useState("");
     const[senha, setSenha] = useState("");
     
     
-    function verificarLogin(){
-        const usuario = listaLogins.find(u => u.cpf === cpf && u.senha === senha);
+    function verificarLogin(e:React.FormEvent) {
+        e.preventDefault();
+        
+        const listaUsuarios = JSON.parse(sessionStorage.getItem("usuarios") || "[]");
+
+        const usuario = listaUsuarios.find(
+            (u:any) => u.email === email && u.senha === senha
+        );
 
         if (!usuario){
-            alert("CPF ou senha incorretos!");
+            alert("E-mail ou senha incorretos!");
             return;
         }
 
-        if (usuario.tipo === "paciente"){
+        sessionStorage.setItem("usuarioLogado", JSON.stringify(usuario))
+        sessionStorage.setItem("logado", "true");
 
-        }
+        alert("Login realizado com sucesso!")
+        navigate("");
     }
 
-
-    
     return(
         <main>
             <h2>Login</h2>
+            
+            
+
 
             <input 
-                type="text"
-                placeholder="CPF"
-                value={cpf}
-                onChange={e=> setCpf(e.target.value)}
+                type="email"
+                placeholder="email"
+                value={email}
+                onChange={e=> setEmail(e.target.value)}
             />
             <input 
                 type="password"

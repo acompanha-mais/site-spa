@@ -1,6 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-export default function SignUpCuidador(){
+
+export default function SignUpCuidador() {
+    const navigate = useNavigate();
+
     const[nome, setNome] = useState("");
     const[nascimento, setNascimento] = useState("");
     const[sexo, setSexo] = useState("");
@@ -82,8 +86,25 @@ export default function SignUpCuidador(){
             return;
         }
 
+        const listaUsuarios = JSON.parse(sessionStorage.getItem("usuarios") || "[]");
+
+        const existe = listaUsuarios.some(
+            (u:any) => u.email === email || u.cpf === cpf
+        );
+        if (existe) {
+            alert("Já existe um usuário com esse e-mail ou CPF.")
+            return;
+        }
+
+        listaUsuarios.push({nome, nascimento, sexo, cep, cpf, telefone, email, senha});
+
+        sessionStorage.setItem("usuarios", JSON.stringify(listaUsuarios));
+        
         alert("Cadastro realizado com sucesso!");
+        navigate("/login");
     }
+
+    
 
     return(
         <main className="min-h-screen flex flex-col items-center justify-center">
