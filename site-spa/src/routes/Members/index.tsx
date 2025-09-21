@@ -10,7 +10,7 @@ export default function Members(){
 
     return(
         <main>
-            <h1 className="text-center pb-26 text-2x1 font-bold">Conheça o time!</h1>
+            <h1 className="text-center pb-30 text-2x1 font-bold">Conheça o time!</h1>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {members.map((m, i) => <Card key={i} {...m}/>)}
             </div>

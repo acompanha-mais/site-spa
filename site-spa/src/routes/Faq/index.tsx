@@ -16,7 +16,7 @@ export default function Faq(){
 
     return(
         <main>
-            <section className="text-center mb-15">
+            <section className="text-center mb-30">
                 <h1 className="mb-5">Possui alguma dúvida?</h1>
                 <h2 className="font-light">Abaixo respondemos as dúvidas mais frequentes!</h2>
             </section>

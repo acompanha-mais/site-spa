@@ -1,7 +1,7 @@
 export default function AboutUs(){
     return(
         <main>
-            <h1 className="text-center mb-20">Quem somos?</h1>
+            <h1 className="text-center mb-30">Quem somos?</h1>
             
             <section className="text-center space-y-4">
                 <p>O Acompanha+ nasceu para atender a uma necessidade real dos pacientes do Hospital das Clínicas: reduzir as dificuldades no acesso às teleconsultas e melhorar a adesão aos atendimentos de saúde.</p>
