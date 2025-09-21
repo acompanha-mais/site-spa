@@ -1,4 +1,4 @@
-import Card from "../../components/Card/card";
+import Card from "../../components/Card/Card";
 import type { Member } from "../../types/memberTypes";
 
 export default function Members(){
