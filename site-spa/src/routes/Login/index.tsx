@@ -33,7 +33,7 @@ export default function Login() {
 
     return(
         <main className="min-h-screen flex flex-col items-center">
-            <h1 className="mb-20 text-center">Login</h1>
+            <h1 className="mb-20">Login</h1>
             <form onSubmit={verificarLogin} className="bg-white shadow-md rounded-lg p-6 w-full max-w-md flex flex-col space-y-4">
                 <input 
                     type="email"

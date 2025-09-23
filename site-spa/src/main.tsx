@@ -11,11 +11,13 @@ import Faq from './routes/Faq/index.tsx'
 import SignUpCuidador from './routes/SignUpCuidador/index.tsx'
 import Login from './routes/Login/index.tsx'
 import CuidadorProfile from './routes/CuidadorProfile/index.tsx'
+import Contact from './routes/Contact/index.tsx'
 
 import Error from './routes/Error/index.tsx'
 
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+
 
 
 const router = createBrowserRouter([
@@ -26,7 +28,8 @@ const router = createBrowserRouter([
     {path: "/faq", element: <Faq/>},
     {path: "/cadastro", element: <SignUpCuidador/>},
     {path: "/login", element: <Login/>},
-    {path: "/perfil-cuidador", element: <CuidadorProfile/>}
+    {path: "/perfil-cuidador", element: <CuidadorProfile/>},
+    {path: "/contato", element: <Contact/>}
   ]}
 ]);
 

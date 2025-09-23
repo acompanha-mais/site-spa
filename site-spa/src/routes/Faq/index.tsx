@@ -1,5 +1,6 @@
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 
 export default function Faq(){
@@ -23,7 +24,7 @@ export default function Faq(){
             
 
             <section>
-                <div className="mb-10">
+                <div className="mb-30">
                     <ul>
                         {faqs.map((faq, index) => (
                             <li key={index} className="font-bold border-b border-gray-400">
@@ -42,6 +43,11 @@ export default function Faq(){
                 <div className="text-center">
                     <h3 className="text-[18px] md:text-[20px] lg:text-[22px] font-bold text-red-600">Queremos te ouvir!</h3>
                     <p>Entre com contato conosco:</p>
+                    <Link to="/contato">
+                        <button className="mt-4">Fale conosco</button>
+                    </Link>
+                    
+                    
                 </div>
             </section>
         </main>

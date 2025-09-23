@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 
@@ -21,6 +21,7 @@ export default function NavBar(){
                 <Link to="/sobre"> Sobre nós</Link>
                 <Link to="/time">Time</Link>
                 <Link to="/faq">FAQ</Link>
+                <Link to="/contato">Contato</Link>
 
                 {!logado && <Link to="/cadastro">Cadastro</Link>}
                 {!logado && <Link to="/login">Login</Link>}
@@ -45,6 +46,7 @@ export default function NavBar(){
                         <Link to="/sobre" onClick={() => setIsOpen(false)}>Sobre nós</Link>
                         <Link to="/time" onClick={() => setIsOpen(false)}>Time</Link>
                         <Link to="/faq" onClick={() => setIsOpen(false)}>FAQ</Link>
+                        <Link to="/contato" onClick={() => setIsOpen(false)}>Contato</Link>
 
                         {!logado && <Link to="/cadastro" onClick={() => setIsOpen(false)}>Cadastro</Link>}
                         {!logado && <Link to="/login" onClick={() => setIsOpen(false)}>Login</Link>}
