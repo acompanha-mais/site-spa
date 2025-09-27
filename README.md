@@ -69,3 +69,7 @@ Reduzir a taxa de absenteísmo em teleconsultas do IMREA, de 20% para < 10%, por
 ## 🔗 Endereço do Repositório do Projeto
 
 https://github.com/acompanha-mais/site-spa
+
+## 🔗 Vídeo
+
+https://youtu.be/pAbGQZXeH4Y
