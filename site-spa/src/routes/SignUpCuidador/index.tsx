@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import type { TipoCadastro } from "../../types/typeCadastro";
+
 
 export default function SignUpCuidador() {
     useEffect(() => {
@@ -9,86 +10,27 @@ export default function SignUpCuidador() {
     }, []);
 
     const navigate = useNavigate();
-
-    const {register, handleSubmit, formState: { errors } } = useForm<TipoCadastro>();
-
-
-    function validarIdade(nascimento: string) {
-        const hoje = new Date();
-        const nasc = new Date(nascimento);
-        let idade = hoje.getFullYear() - nasc.getFullYear();
-        const m = hoje.getMonth() - nasc.getMonth();
-        if (m < 0 || (m === 0 && hoje.getDate() < nasc.getDate())) idade--;
-        return idade >= 18;
-    }
-
-    async function validarCep(cep: string) {
-        try {
-            const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
-            const data = await response.json();
-            return !data.erro;
-        } catch {
-            return false;
-        }
-    }       
-
-    function validarCpf(cpf: string): boolean {
-        cpf = cpf.replace(/[^\d]+/g, "");
-        if (cpf.length !== 11) return false;
-        if (/^(\d)\1+$/.test(cpf)) return false;
-
-        let soma = 0;
-        for (let i = 0; i < 9; i++) {
-            soma += parseInt(cpf.charAt(i)) * (10 - i);
-        }
-
-        let resto = (soma * 10) % 11;
-        if (resto === 10 || resto === 11) resto = 0;
-        if (resto !== parseInt(cpf.charAt(9))) return false;
-
-        soma = 0;
-        for (let i = 0; i < 10; i++) {
-            soma += parseInt(cpf.charAt(i)) *  (11 - i);
-        }
-
-        resto = (soma * 10) % 11;
-        if (resto === 10 || resto === 11) resto = 0;
-        if (resto !== parseInt(cpf.charAt(10))) return false;
-
-        return true;
-    }
+    const {register, handleSubmit, setError, formState: { errors } } = useForm<TipoCadastro>();      
 
     const onSubmit = async (data: TipoCadastro) => {
-        if (!validarIdade(data.nascimento)) {
-            alert("Você precisa ter 18 anos ou mais.");
-            return;
-        }
-
-        if (!(await validarCep(data.cep))) {
-            alert("CEP inválido.");
-            return;
-        }
-
-        if (!validarCpf(data.cpf)) {
-            alert("CPF inválido.")
-            return;
-        }
-
         const listaUsuarios = JSON.parse(sessionStorage.getItem("usuarios") || "[]");
 
-        const existe = listaUsuarios.some(
-            (u:any) => u.email === data.email || u.cpf === data.cpf
-        );
+        let hasError = false;
 
-        if (existe) {
-            alert("Já existe um usuário com esse e-mail ou CPF.")
-            return;
+        if (listaUsuarios.some((u: any) => u.email === data.email)) {
+            setError("email", { type: "manual", message: "E-mail já cadastrado" });
+            hasError = true;
         }
+
+        if (listaUsuarios.some((u: any) => u.cpf === data.cpf)) {
+            setError("cpf", { type: "manual", message: "CPF já cadastrado" });
+            hasError = true;
+        }
+
+        if (hasError) return;
 
         listaUsuarios.push(data);
         sessionStorage.setItem("usuarios", JSON.stringify(listaUsuarios));
-
-        alert("Cadastro realizado com sucesso!");
         navigate("/login");
     };
     
@@ -99,53 +41,105 @@ export default function SignUpCuidador() {
                 <input 
                     type="text"
                     placeholder="Nome completo"
-                    {...register("nome", { required: true })}
+                    {...register("nome", { required: "O nome é obrigatório" })}
                     className="border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-600" 
                 />
+                {errors.nome && <span className="text-red-600">{errors.nome.message}</span>}
                 <input 
                     type="date"
                     placeholder="Data de nascimento"
-                    {...register("nascimento", { required: true })}
+                    {...register("nascimento", { required: "A data de nascimento é obrigatória", validate: value => {
+                        const hoje = new Date();
+                        const nasc = new Date(value);
+                        let idade = hoje.getFullYear() - nasc.getFullYear();
+                        const m = hoje.getMonth() - nasc.getMonth();
+                        if (m < 0 || (m === 0 && hoje.getDate() < nasc.getDate())) idade--;
+                        return idade >= 18 || "Você precisa ter 18 anos ou mais";
+                    } 
+                })}
                     className="border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-600" 
                 />
                 <select
-                    {...register("sexo", { required: true })}
+                    {...register("sexo", { required: "O sexo é obrigatório" })}
+                    defaultValue=""
                     className="border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-600"
                 >
                     <option value="" disabled>Selecione o sexo</option>
                     <option value="M">Masculino</option>
                     <option value="F">Feminino</option>
                 </select>
+                {errors.sexo && <span className="text-red-600">{errors.sexo.message}</span>}
                 <input 
                     type="text" 
                     placeholder="CEP"
-                    {...register("cep", { required: true, minLength: 8, maxLength: 8 })}
+                    {...register("cep", { 
+                        required: "O CEP é obrigatório", 
+                        minLength: { value: 8, message: "O CEP deve ter 8 dígitos" }, 
+                        maxLength: { value: 8, message: "O CEP deve ter 8 dígitos" },
+                        validate: async value => {
+                            try {
+                                const response = await fetch(`https://viacep.com.br/ws/${value}/json/`);
+                                const data = await response.json();
+                                return !data.erro || "CEP inválido";
+                            } catch {
+                                return "Erro ao consultar CEP";
+                            }   
+                        } 
+                    })}
                     className="border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-600"
                 />
+                {errors.cep && <span className="text-red-600">{errors.cep.message}</span>}
                 <input 
                     type="text"
                     placeholder="CPF" 
-                    {...register("cpf", { required: true, minLength: 11, maxLength: 11 })}
+                    {...register("cpf", {
+                        required: "O CPF é obrigatório", 
+                        minLength: { value: 11, message: "O CPF deve ter 11 dígitos" }, 
+                        maxLength: { value: 11, message: "O CPF deve ter 11 dígitos" },
+                        validate: value => {
+                            value = value.replace(/[^\d]+/g, "");
+                            if (/^(\d)\1+$/.test(value)) return "CPF inválido";
+
+                            let soma = 0;
+                            for (let i = 0; i < 9; i++) soma += parseInt(value.charAt(i)) * (10 - i);
+                            let resto = (soma * 10) % 11;
+                            if (resto === 10 || resto === 11) resto = 0;
+                            if (resto !== parseInt(value.charAt(9))) return "CPF inválido";
+
+                            soma = 0;
+                            for (let i = 0; i < 10; i++) soma += parseInt(value.charAt(i)) * (11 - i);
+                            resto = (soma * 10) % 11;
+                            if (resto === 10 || resto === 11) resto = 0;
+                            if (resto !== parseInt(value.charAt(10))) return "CPF inválido";
+
+                            return true;
+                        }
+                    })}
                     className="border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-600"
                 />
+                {errors.cpf && <span className="text-red-600">{errors.cpf.message}</span>}
                 <input 
                     type="text"
                     placeholder="Número de telefone"
-                    {...register("telefone", { required: true, minLength: 8, maxLength: 11 })}
+                    {...register("telefone", { required: "O telefone é obrgatório", minLength: { value: 8, message: "Telefone inválido"}, maxLength: { value: 11, message: "Telefone inválido" } })}
                     className="border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-600"
                 />
+                {errors.telefone && <span className="text-red-600">{errors.telefone.message}</span>}
                 <input 
                     type="email"
                     placeholder="Email"
-                    {...register("email", { required: true })}
+                    {...register("email", { required: "O email é obrigatório" })}
                     className="border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-600" 
                 />
+                {errors.email && <span className="text-red-600">{errors.email.message}</span>}
                 <input 
                     type="password"
                     placeholder="Senha"
-                    {...register("senha", { required: true, minLength: 8, maxLength: 32 })}
+                    {...register("senha", { required: "A senha é obrigatória", minLength: { value: 8, message: "A senha deve ter no mínimo 8 caracteres" }, maxLength: { value: 32, message: "A senha deve ter no máximo 32 caracteres" } })}
                     className="border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-600" 
                 />
+                {errors.senha && <span className="text-red-600">{errors.senha.message}</span>}
+
                 <button type="submit" className="mx-auto w-[130px] md:w-[176px] mt-4">Cadastrar</button>
             </form>
         </main>
