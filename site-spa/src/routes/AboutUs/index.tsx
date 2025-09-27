@@ -1,4 +1,11 @@
+import { useEffect } from "react";
+
+
 export default function AboutUs(){
+    useEffect(() => {
+        document.title = "Sobre nós - Acompanha+"
+    }, []);
+
     return(
         <main>
             <h1 className="text-center mb-30">Quem somos?</h1>

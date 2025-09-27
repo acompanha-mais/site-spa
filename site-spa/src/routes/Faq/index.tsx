@@ -1,9 +1,13 @@
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 
 export default function Faq(){
+    useEffect(() => {
+        document.title = "FAQ - Acompanha+"
+    }, []);
+
     const[abrirResposta, setAbrirResposta] = useState<number | null>(null);
 
     const faqs = [

@@ -1,7 +1,12 @@
+import { useEffect } from "react";
 import Card from "../../components/Card/Card";
 import type { Member } from "../../types/memberTypes";
 
+
 export default function Members(){
+    useEffect(() => {
+        document.title = "Time - Acompanha+"
+    }, []);
 
     const members: Member[] = [
         {nome: "Matheus Vecchi", rm: "RM561716", turma: "1TDSPO", foto:"./member-1.jpeg"},

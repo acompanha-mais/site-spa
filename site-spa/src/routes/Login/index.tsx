@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 
 export default function Login() {
+    useEffect(() => {
+        document.title = "Login - Acompanha+"
+    }, []);
+
     const navigate = useNavigate();
     const[email, setEmail] = useState("");
     const[senha, setSenha] = useState("");

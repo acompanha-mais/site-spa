@@ -5,10 +5,12 @@ import AppointmentTable from "../../components/AppointmentTable/AppointmentTable
 
 
 export default function CuidadorProfile() {
+    useEffect(() => {
+        document.title = "Meu perfil - Acompanha+"
+    }, []);
+
     const navigate = useNavigate();
     const[compromissos, setCompromissos] = useState<TipoCompromisso[]>([]);
-
-
 
     useEffect(() => {
         const logado = sessionStorage.getItem("logado");

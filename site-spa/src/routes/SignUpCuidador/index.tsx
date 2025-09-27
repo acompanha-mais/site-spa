@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 
 export default function SignUpCuidador() {
+    useEffect(() => {
+        document.title = "Cadastro - Acompanha+"
+    }, []);
+
     const navigate = useNavigate();
 
     const[nome, setNome] = useState("");

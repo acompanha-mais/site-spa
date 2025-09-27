@@ -1,4 +1,11 @@
+import { useEffect } from "react";
+
+
 export default function Contact() {
+    useEffect(() => {
+        document.title = "Contato - Acompanha+"
+    }, []);
+
     return(
         <main className="min-h-screen flex flex-col items-center">
             <h1 className="mb-5 text-center">Queremos te ouvir!</h1>
