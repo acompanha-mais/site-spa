@@ -16,7 +16,7 @@ export default function NavBar(){
 
     return(
         <nav className="relative">
-            <div className="hidden lg:flex space-x-12 2xl:text-[18px]">
+            <div className="max-[1300px]:hidden flex space-x-12 2xl:text-[18px]">
                 <Link to="/">Início</Link>
                 <Link to="/sobre"> Sobre nós</Link>
                 <Link to="/time">Time</Link>
@@ -29,7 +29,7 @@ export default function NavBar(){
                 {logado && <span onClick={handleLogout} className="text-red-600 cursor-pointer">Sair</span>}
             </div>
             
-            <div className="lg:hidden">
+            <div className="max-[1300px]:block hidden relative">
                 <button
                     onClick={() => setIsOpen(!isOpen)}
                     className="[all:unset] text-6xl cursor-pointer"
