@@ -16,20 +16,39 @@ export default function CuidadorProfile() {
         const logado = sessionStorage.getItem("logado");
         if (logado !== "true") {
             navigate("/login");
-        }
-
-        const fetchData = async () => {
-            const response = await fetch("http://localhost:3001/compromissos");
-            const data:TipoCompromisso[] = await response.json();
-            setCompromissos(data);
+            return;
         }
         
+        const usuario = JSON.parse(sessionStorage.getItem("usuarioLogado") || "{}");
+
+        const cuidadorId = usuario.id;
+        if (!cuidadorId) {
+            console.error("ID do cuidador não encontrado no sessionStorage.");
+            return;
+        }
+        
+        const fetchData = async () => {
+            try {
+                const response = await fetch(`https://acompanhamaisjava.onrender.com/consultas/cuidador/${cuidadorId}`);
+
+            if (!response.ok) {
+                throw new Error("Erro ao buscar compromissos");
+            }
+
+            const data: TipoCompromisso[] = await response.json();
+
+            setCompromissos(data);
+            } catch (error) {
+                console.error("Erro ao carregar compromissos:", error);
+            }
+        };
+
         fetchData();
 
     }, [navigate]);
-    
-    const usuario = JSON.parse(sessionStorage.getItem("usuarioLogado") || "[]");
 
+    const usuario = JSON.parse(sessionStorage.getItem("usuarioLogado") || "{}");
+    
     return(
         <main>
             <section className="text-center mb-30">
