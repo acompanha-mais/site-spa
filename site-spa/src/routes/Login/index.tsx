@@ -43,16 +43,16 @@ export default function Login() {
             <h1 className="mb-20">Login</h1>
             <form onSubmit={handleSubmit(onSubmit)} className="bg-white shadow-md rounded-lg p-6 w-full max-w-md flex flex-col space-y-4">
                 <input 
-                    type="email"
-                    placeholder="Email"
-                    {...register("email", { required: "O email é obrigatório" })}
+                    type="text"
+                    placeholder="CPF"
+                    {...register("cpf", { required: "O CPF é obrigatório" })}
                     className="border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-600"
                 />
-                {errors.email && <span className="text-red-600">{errors.email.message}</span>}
+                {errors.cpf && <span className="text-red-600">{errors.cpf.message}</span>}
                 <input 
                     type="password"
                     placeholder="Senha" 
-                    {...register("senha", {required: "A senha é obrigatória", minLength: { value: 8, message: "A senha deve ter no mínimo 8 caracteres" }})}
+                    {...register("senha", { required: "A senha é obrigatória" })}
                     className="border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-600"
                 />
                 {errors.senha && <span className="text-red-600">{errors.senha.message}</span>}
