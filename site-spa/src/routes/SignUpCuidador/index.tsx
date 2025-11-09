@@ -13,25 +13,21 @@ export default function SignUpCuidador() {
     const {register, handleSubmit, setError, formState: { errors } } = useForm<TipoCadastro>();      
 
     const onSubmit = async (data: TipoCadastro) => {
-        const listaUsuarios = JSON.parse(sessionStorage.getItem("usuarios") || "[]");
-
-        let hasError = false;
-
-        if (listaUsuarios.some((u: any) => u.email === data.email)) {
-            setError("email", { type: "manual", message: "E-mail já cadastrado" });
-            hasError = true;
+        if (data.cep) {
+            try {
+                const response = await fetch(`https://viacep.com.br/ws/${data.cep}/json/`);
+                const cepData = await response.json();
+                if (!cepData.erro) {
+                    data.endereco = `${cepData.logradouro}, ${cepData.bairro}, ${cepData.localidade} - ${cepData.uf}`;
+                } else {
+                    data.endereco = "";
+                }
+            } catch {
+                data.endereco = "";
+            }
         }
 
-        if (listaUsuarios.some((u: any) => u.cpf === data.cpf)) {
-            setError("cpf", { type: "manual", message: "CPF já cadastrado" });
-            hasError = true;
-        }
-
-        if (hasError) return;
-
-        listaUsuarios.push(data);
-        sessionStorage.setItem("usuarios", JSON.stringify(listaUsuarios));
-        navigate("/login");
+        
     };
     
     return(
