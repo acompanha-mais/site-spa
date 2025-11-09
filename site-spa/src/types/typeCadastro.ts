@@ -7,4 +7,5 @@ export type TipoCadastro = {
     telefone:string;
     email:string;
     senha:string;
+    endereco?: string;
 }
