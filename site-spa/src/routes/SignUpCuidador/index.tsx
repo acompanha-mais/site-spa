@@ -26,8 +26,31 @@ export default function SignUpCuidador() {
                 data.endereco = "";
             }
         }
-
         
+        const payload = {
+            ...data,
+            dataNascimento: data.nascimento,
+        };
+        delete (payload as any).nascimento;
+
+        try {
+            const response = await fetch("https://acompanhamaisjava.onrender.com/cuidadores", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(payload)
+            });
+
+            if (!response.ok) {
+                alert("Erro ao cadastrar.");
+                return;
+            }
+            navigate("/login");
+        } catch (error) {
+            console.error(error);
+            alert("Erro ao cadastrar.")
+        }
     };
     
     return(
