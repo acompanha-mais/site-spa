@@ -10,7 +10,7 @@ export default function SignUpCuidador() {
     }, []);
 
     const navigate = useNavigate();
-    const {register, handleSubmit, setError, formState: { errors } } = useForm<TipoCadastro>();      
+    const {register, handleSubmit, formState: { errors } } = useForm<TipoCadastro>();      
 
     const onSubmit = async (data: TipoCadastro) => {
         if (data.cep) {
