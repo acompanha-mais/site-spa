@@ -11,8 +11,11 @@ export default function CuidadorProfile() {
 
     const navigate = useNavigate();
     const[compromissos, setCompromissos] = useState<TipoCompromisso[]>([]);
-
+    const [hasFetched, setHasFetched] = useState(false);
+    
     useEffect(() => {
+        if (hasFetched) return;
+        setHasFetched(true);
         const logado = sessionStorage.getItem("logado");
         if (logado !== "true") {
             navigate("/login");
