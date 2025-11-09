@@ -27,11 +27,7 @@ Reduzir a taxa de absenteísmo em teleconsultas do IMREA, de 20% para < 10%, por
 
     npm i
 
-4º Suba a API local
-
-    npm run api
-
-5º Rode a aplicação front-end
+4º Rode a aplicação front-end
 
     npm run dev
 
@@ -43,6 +39,7 @@ Reduzir a taxa de absenteísmo em teleconsultas do IMREA, de 20% para < 10%, por
 - TailwindCSS
 - React Router DOM
 - JSON Server
+- Vercel
 
 
 ## 📁 Estrutura de Pastas e Arquivos
@@ -70,6 +67,8 @@ Reduzir a taxa de absenteísmo em teleconsultas do IMREA, de 20% para < 10%, por
 
 https://github.com/acompanha-mais/site-spa
 
-## 🔗 Vídeo
+## 🔗 Vídeo youtube
 
-https://youtu.be/pAbGQZXeH4Y
+## 🔗 URL Vercel
+
+https://site-spa-three.vercel.app/
