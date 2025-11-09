@@ -1,4 +1,4 @@
 export type TipoLogin = {
-    email:string;
+    cpf: string;
     senha:string;
 }

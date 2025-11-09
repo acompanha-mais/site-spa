@@ -23,7 +23,7 @@ export default function CuidadorProfile() {
         }
         
         const usuario = JSON.parse(sessionStorage.getItem("usuarioLogado") || "{}");
-        const cuidadorId = usuario.id;
+        const cuidadorId = usuario.idPessoa;
 
         if (!cuidadorId) {
             console.error("ID do cuidador não encontrado no sessionStorage.");
