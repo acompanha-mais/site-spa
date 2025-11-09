@@ -69,6 +69,8 @@ https://github.com/acompanha-mais/site-spa
 
 ## 🔗 Vídeo youtube
 
+https://youtu.be/_B2I4zDC5vI
+
 ## 🔗 URL Vercel
 
 https://site-spa-three.vercel.app/
