@@ -9,27 +9,33 @@ export default function Login() {
     }, []);
 
     const navigate = useNavigate();
-    
     const { register, handleSubmit, formState: { errors } } = useForm<TipoLogin>();
 
-    const onSubmit = (data: TipoLogin) => {
-        const listaUsuarios = JSON.parse(sessionStorage.getItem("usuarios") || "[]");
+    const onSubmit = async (data: TipoLogin) => {
+        try {
+            const response = await fetch(`https://acompanhamaisjava.onrender.com/cuidadores/${data.cpf}`)
+            if (!response.ok) {
+                alert("E-mail ou senha incorretos!");
+                return;
+            }
 
-        const usuario = listaUsuarios.find(
-            (u:any) => u.email === data.email && u.senha === data.senha
-        );
+            const usuario = await response.json();
 
-        if (!usuario){
-            alert("E-mail ou senha incorretos!");
-            return;
+            if (usuario.senha !== data.senha) {
+                alert("E-mail ou senha incorretos!");
+                return;
+            }
+
+            sessionStorage.setItem("usuarioLogado", JSON.stringify(usuario));
+            sessionStorage.setItem("logado", "true");
+
+            alert("Login realizado com sucesso!");
+            navigate("/perfil-cuidador");
+            window.location.reload();
+        } catch (error) {
+            console.error(error);
+            alert("Erro ao fazer login.");
         }
-
-        sessionStorage.setItem("usuarioLogado", JSON.stringify(usuario))
-        sessionStorage.setItem("logado", "true");
-
-        alert("Login realizado com sucesso!")
-        navigate("/perfil-cuidador");
-        window.location.reload();
     };
 
     return(
