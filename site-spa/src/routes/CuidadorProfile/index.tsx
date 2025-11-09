@@ -44,7 +44,7 @@ export default function CuidadorProfile() {
                 nomePaciente: item.paciente?.nome || "Sem nome",
                 data: item.dataConsulta,
                 hora: item.horarioConsultaString,
-                endereco: "Não informado"
+                endereco: item.endereco
             }));
 
             setCompromissos(data);
