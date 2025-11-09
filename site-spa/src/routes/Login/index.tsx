@@ -31,7 +31,6 @@ export default function Login() {
 
             alert("Login realizado com sucesso!");
             navigate("/perfil-cuidador");
-            window.location.reload();
         } catch (error) {
             console.error(error);
             alert("Erro ao fazer login.");
