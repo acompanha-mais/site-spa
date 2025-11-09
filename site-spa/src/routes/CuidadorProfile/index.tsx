@@ -23,8 +23,8 @@ export default function CuidadorProfile() {
         }
         
         const usuario = JSON.parse(sessionStorage.getItem("usuarioLogado") || "{}");
-
         const cuidadorId = usuario.id;
+
         if (!cuidadorId) {
             console.error("ID do cuidador não encontrado no sessionStorage.");
             return;
@@ -38,9 +38,17 @@ export default function CuidadorProfile() {
                 throw new Error("Erro ao buscar compromissos");
             }
 
-            const data: TipoCompromisso[] = await response.json();
+            const apiData = await response.json();
+
+            const data: TipoCompromisso[] = apiData.map((item: any) => ({
+                nomePaciente: item.paciente?.nome || "Sem nome",
+                data: item.dataConsulta,
+                hora: item.horarioConsultaString,
+                endereco: "Não informado"
+            }));
 
             setCompromissos(data);
+
             } catch (error) {
                 console.error("Erro ao carregar compromissos:", error);
             }
